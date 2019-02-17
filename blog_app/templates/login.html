@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1 class="center-align">Sign In</h1>
+    <form action="" method="post" class="col s12" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="row">
+            <div class="input-field col s12">
+              {{form.username(size=32, id="username", class="validate") }}
+              {{ form.username.label(for="username") }}
+              {% for error in form.username.errors %}
+                <span class="red-text text-darken-2">{{ error }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+                {{ form.password(size=32, id="password", class="validate") }}
+                {{ form.password.label(for="password") }}
+                {% for error in form.password.errors %}
+                    <span class="red-text text-darken-2">{{ error }}</span>
+                {% endfor %}
+            </div>
+          </div>
+          <p>
+            <label>
+              {{ form.remember_me()}}
+              <span>{{ form.remember_me.label }}</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              {{ form.submit(class="btn waves-effect waves-light") }}
+            </label>
+          </p>
+    </form>
+{% endblock %}
